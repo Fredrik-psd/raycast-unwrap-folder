@@ -1,0 +1,46 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "unwrap-folder",
+  "title": "Unwrap Folder",
+  "description": "Move a selected Finder folder's contents up one level and delete the empty folder.",
+  "icon": "icon.png",
+  "author": "Fredrik-psd",
+  "license": "MIT",
+  "platforms": [
+    "macOS"
+  ],
+  "categories": [
+    "Productivity"
+  ],
+  "commands": [
+    {
+      "name": "unwrap-folder",
+      "title": "Unwrap Folder",
+      "description": "Move a selected Finder folder's contents up one level and delete the folder",
+      "mode": "no-view",
+      "keywords": [
+        "finder",
+        "folder",
+        "unwrap",
+        "flatten"
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "1.104.12"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "2.1.1",
+    "@types/node": "25.6.0",
+    "eslint": "10.2.1",
+    "prettier": "3.8.3",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "ray develop",
+    "build": "ray build -e dist",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
