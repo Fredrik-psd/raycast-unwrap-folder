@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "unwrap-folder",
   "title": "Unwrap Folder",
-  "description": "Move a selected Finder folder's contents up one level and delete the empty folder.",
+  "description": "Flatten one or more selected Finder folders by moving their contents up one level, and wrap a selection into a new folder.",
   "icon": "icon.png",
   "author": "Fredrik-psd",
   "license": "MIT",
@@ -24,6 +24,52 @@
         "unwrap",
         "flatten"
       ]
+    },
+    {
+      "name": "unwrap-folder-deep",
+      "title": "Unwrap Folder Deeply",
+      "description": "Repeat unwrap up to N levels — useful for archives extracted with multiple wrapper folders",
+      "mode": "view",
+      "keywords": [
+        "finder",
+        "folder",
+        "unwrap",
+        "deep",
+        "depth",
+        "recursive"
+      ]
+    },
+    {
+      "name": "wrap-folder",
+      "title": "Wrap into Folder",
+      "description": "Move the selected Finder items into a new folder you name",
+      "mode": "view",
+      "keywords": [
+        "finder",
+        "folder",
+        "wrap",
+        "group",
+        "new"
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "skipConfirmation",
+      "type": "checkbox",
+      "required": false,
+      "title": "Confirmation",
+      "label": "Skip the confirmation dialog for Unwrap Folder",
+      "description": "When on, Unwrap Folder runs immediately without asking. Unwrap Folder Deeply always confirms.",
+      "default": false
+    },
+    {
+      "name": "disposableEntries",
+      "type": "textfield",
+      "required": false,
+      "title": "Disposable Entries",
+      "description": "Comma-separated names safe to delete from an otherwise-empty folder before trashing it (e.g. .DS_Store, Thumbs.db, .localized).",
+      "default": ".DS_Store, .localized, Thumbs.db"
     }
   ],
   "dependencies": {

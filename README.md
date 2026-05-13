@@ -1,22 +1,34 @@
 # Unwrap Folder
 
-A Raycast extension that unwraps one or more selected Finder folders — moves everything inside each folder up one level, then moves the now-empty wrapper folder to the Trash.
+A Raycast extension for flattening and grouping Finder folders.
 
-## What it does
+## Commands
 
-When you select one or more folders in Finder and run **Unwrap Folder**, the command:
+- **Unwrap Folder** — moves everything inside each selected Finder folder up one level, then trashes the empty wrapper folder.
+- **Unwrap Folder Deeply** — repeats Unwrap up to N levels for archives that come with multiple nested wrapper folders.
+- **Wrap into Folder** — moves the selected Finder items into a new folder you name.
 
-1. Moves everything inside each selected folder up one level.
-2. Moves each selected folder to the Trash only after verifying it is empty.
+## Unwrap Folder
 
-The command stops before moving anything if:
+Select one or more folders in Finder and run **Unwrap Folder**. By default a confirmation dialog appears; disable it in the extension's preferences if you use this often.
 
-- a selected item is a file rather than a folder,
-- one selected folder is nested inside another selected folder,
-- the unwrap would create a name conflict in the parent directory.
+Safety checks:
+- Stops before moving anything if a selected item is a file rather than a folder.
+- Stops if one selected folder is nested inside another selected folder.
+- Stops if the unwrap would create a name conflict in the parent directory.
+- Handles the case where a folder inside the selected folder has the same name as the selected folder.
 
-It also handles the case where a folder inside the selected folder has the same name as the selected folder, by temporarily renaming the wrapper folder before moving its contents out.
+Progress is reported in the toast for very large unwraps.
 
-## Usage
+## Unwrap Folder Deeply
 
-Select one or more folders in Finder, then run **Unwrap Folder** from Raycast.
+Sometimes a downloaded archive nests its contents in two or three wrapper folders. Run **Unwrap Folder Deeply** to repeat Unwrap up to a chosen depth, stopping early once the chain ends (i.e. once a wrapper has more than one item or no folder to unwrap).
+
+## Wrap into Folder
+
+Select one or more items in Finder, run **Wrap into Folder**, and type a name. The extension creates the new folder next to the selection and moves every selected item into it. All selected items must be in the same parent folder.
+
+## Preferences
+
+- **Skip Confirmation** — when on, **Unwrap Folder** runs immediately without asking.
+- **Disposable Entries** — comma-separated list of names safe to delete from an otherwise-empty wrapper folder before trashing it. Defaults to `.DS_Store, .localized, Thumbs.db`.
